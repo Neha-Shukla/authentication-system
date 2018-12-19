@@ -1,0 +1,61 @@
+body{
+     background-image: url("https://c.pxhere.com/photos/47/4a/pier_seaside_beach_ocean_sea_coast_water_shore-1227260.jpg!d");
+     background-repeat: no-repeat;
+     background-size: 100% 100%;
+    }
+
+.navbar{
+     border-radius: 0;
+     }
+.navbar-brand{
+      font-family: 'Satisfy',cursive;
+      }
+.title{
+     font-family: 'Kalam', cursive;
+     font-size: 25px;
+     font-style: bold;
+       }
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.left {
+    left: 0;
+    background-color: #111;
+}
+
+.right {
+    right: 0;
+    background-color: #111;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.centered img {
+    width: 150px;
+    border-radius: 50%;
+}
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+
+
+
+

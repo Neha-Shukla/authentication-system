@@ -16,10 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
+from mysite import views as views
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', auth_views.LoginView.as_view()),
-    path('logout/', auth_views.LogoutView.as_view()),
+    path('profile/', views.profile, name='profile'),
+    path('login/', auth_views.LoginView.as_view(template_name='mysite/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='mysite/logout.html'), {'next_page': 'mysite:index'},
+         name='logout'),
     path('', include('mysite.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
