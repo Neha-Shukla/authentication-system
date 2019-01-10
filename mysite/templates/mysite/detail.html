@@ -1,0 +1,42 @@
+{% extends 'mysite/base.html' %}
+{% block title %}
+Album details
+{% endblock %}
+{% block body %}
+<br><br><br><br>
+<div class="split left">
+    <div class="centered">
+        <br><br><br><br><br><br>
+<h1>MY ALBUM</h1><BR>
+<img src="{{ album.album_logo.url }}" width="25%" height="45%">
+<hr><hr>
+<h2>{{ album.album_title }}</h2>
+<h3>{{ album.artist }}</h3>
+<br><br>
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+    <form action="#" method="post">
+    {% csrf_token %}
+    {% for song in album.song_set.all %}<input type="radio" id="song{{ forloop.counter }}" name="song" value="{{song.pk}}">
+        <label for="song{{ forloop.counter }}">
+           {{ song.song_title }}<br>
+            <audio controls>
+    <source src="{{ song.audio_file.url }}" type="audio/mpeg">
+</audio>
+
+            <br><br>
+
+        </label><br>
+    {% endfor %}
+    <br><br>
+
+</form>
+    </div>
+</div>
+<div class="split right">
+
+        <img src="{{ album.album_logo.url }}" width="100%" height="100%">
+
+</div>
+{% endblock %}

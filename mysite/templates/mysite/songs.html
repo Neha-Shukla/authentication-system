@@ -1,0 +1,33 @@
+{% extends 'mysite/base.html' %}
+{% block title %}
+Songs
+{% endblock %}
+{% block body %}
+{% if all_songs %}
+<h1>ALL SONGS</h1>
+<br>
+<br>
+<ul>
+    {% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {% for song in all_songs %}
+        <ul>
+            {{ song.song_title }}<br>
+            <audio controls>
+                <source src="{{ song.audio_file.url }}" type="audio/mpeg">
+            </audio>
+
+            <br><br>
+
+        </label><br>
+        </ul>
+        {% endfor %}
+    </form>
+</ul>
+{% else %}
+<h3>you dont have any songs</h3>
+{% endif %}
+{% endblock %}

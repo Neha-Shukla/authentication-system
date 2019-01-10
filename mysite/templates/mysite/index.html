@@ -1,0 +1,34 @@
+{% extends 'mysite/base.html' %}
+{% block title %}
+Albums
+{% endblock %}
+{% block body %}
+<iframe id="inlineFrameExample"
+    title="Inline Frame Example"
+    width="0"
+    height="0"
+    src="https://r1---sn-a5meknll.googlevideo.com/videoplayback?clen=1546447&ratebypass=yes&lmt=1540904667613142&c=WEB&fvip=1&dur=40.425&ipbits=0&pl=18&ei=JKvqW4f8Eo-0oQPorKTICA&source=youtube&txp=2211222&expire=1542127492&id=o-AGwpYsicrwNkcJRK4IuX3b_HQbMIWTTxxUEcaEAyx1Op&itag=18&beids=9466586&signature=397139C5DAF273013B7C2AC0CD121C35741C45A1.2968461BB51CA50B18F27960B1D8E9861EC03407&sparams=clen,dur,ei,expire,gir,id,ip,ipbits,ipbypass,itag,lmt,mime,mip,mm,mn,ms,mv,pl,ratebypass,requiressl,source&requiressl=yes&ip=209.97.166.110&mime=video%2Fmp4&gir=yes&key=cms1&title=[DownloadVideoMp3.com]Energetic-And-Powerful-Rock-Background-Music-START-YOUR-DAY-Motivational-Rock-Background-Music&rm=sn-npoey7e&fexp=9466586,23763603&req_id=8ca2680c4077a3ee&ipbypass=yes&mip=47.30.224.134&cm2rm=sn-gwpa-qxa67e,sn-qxael7e&redirect_counter=3&cms_redirect=yes&mm=34&mn=sn-a5meknll&ms=ltu&mt=1542105767&mv=m"> </iframe>
+
+{% if all_albums %}
+    <h1>ALL ALBUMS</h1>
+<br>
+<br>
+    <ul>
+        {% for album in all_albums %}
+        <div class="title"><li><a href="{% url 'mysite:detail' album.id %}">{{album.album_title}}<br><br>
+        <img src="{{ album.album_logo.url }}" class = "img-circle" height= "20%" width ="22%">
+        </a></li><br>
+        <!--delete-->
+        <form method="POST" action="{% url 'mysite:album-delete' album.id %}">
+   {% csrf_token %}<button type="submit" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+</form>﻿
+        </div>
+        <br><br><br><br>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>you dont have any albums</h3>
+{% endif %}
+{% endblock %}

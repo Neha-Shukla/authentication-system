@@ -2,6 +2,7 @@ body{
      background-image: url("https://c.pxhere.com/photos/47/4a/pier_seaside_beach_ocean_sea_coast_water_shore-1227260.jpg!d");
      background-repeat: no-repeat;
      background-size: 100% 100%;
+     background-attachment: fixed;
     }
 
 .navbar{
